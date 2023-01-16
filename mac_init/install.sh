@@ -55,9 +55,6 @@ else
   echo "You have installed intellij-idea"
 fi
 
-git clone --depth=1 https://github.com/smallmonsters/shell-script.git
-mv shell-script $HOME/scripts
-
 # brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 # brew install redis
 # brew_install python3
