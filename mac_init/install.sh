@@ -41,18 +41,37 @@ else
 fi
 
 # TODO: 路径不对
-if [[ ! -e /Applications/Visual\ Studio\ Code.app ]]; then
-  # TODO: 这里需要配置环境吗
-  brew install java --cask
+if [[ ! -e /Applications/IntelliJ\ IDEA\ CE.app ]]; then
+  brew install --cask intellij-idea-ce
+else
+  echo "You have installed intellij-idea-ce"
+fi
+
+if [ ! -x "$(command -v yarn)" ]; then
+  brew install yarn
+else
+  echo "You have installed yarn"
+fi
+
+if [ ! -x "$(command -v java --version)" ]; then
+  brew install java
+  brew tap homebrew/cask-versions
+  # 需要brew的源是git
+  # brew tap AdoptOpenJDK/openjdk
+  # brew install adoptopenjdk8
+  brew install jenv
+  brew install zulu8
+  jenv global 1.8
+  # jdk7
+  # brew install zulu7
 else
   echo "You have installed java"
 fi
 
-# TODO: 路径不对
-if [[ ! -e /Applications/IntelliJ\ IDEA.app ]]; then
-  brew install --cask intellij-idea
+if [ ! -x "$(command -v lerna)" ]; then
+  brew install lerna
 else
-  echo "You have installed intellij-idea"
+  echo "You have installed lerna"
 fi
 
 # brew install --HEAD universal-ctags/universal-ctags/universal-ctags

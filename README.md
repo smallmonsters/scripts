@@ -5,6 +5,12 @@
 
 ## 使用
 
-> git clone --depth 1 <https://github.com/smallmonsters/scripts.git>
-> 电脑重装后安装配置： ./install.sh mac-init
-> 下载shell： ./install.sh
+git clone --depth 1 <https://github.com/smallmonsters/scripts.git>
+
+### 电脑重装后安装配置
+
+> ./install.sh mac-init
+
+### 下载shell
+
+> ./install.sh

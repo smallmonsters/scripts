@@ -6,13 +6,24 @@ alias l='ls -alhF'
 alias la='ls -AFh'
 alias ll='ls -lhAF'
 # 备份.zshrc文件
-alias backup='~/scripts/startup.sh'
+alias backup='~/scripts/shell/startup.sh'
 alias day='date "+%Y-%m-%d %H:%M:%S"'
 
-# brew 清华镜像
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
-export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+# brew 阿里镜像
+# git -C "$(brew --repo)" remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
+# git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
+# git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-cask.git
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+
+# #brew 官方镜像
+# #git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew.git
+# export HOMEBREW_BREW_GIT_REMOTE="https://github.com/Homebrew/brew.git"
+# #git -C "$(brew --repo homebrew/core)" remote set-url origin https://github.com/Homebrew/homebrew-core.git
+# export HOMEBREW_CORE_GIT_REMOTE="https://github.com/Homebrew/homebrew-core.git"
+# git -C "$(brew --repo homebrew/cask)" remote set-url origin https://github.com/Homebrew/homebrew-cask
+# export HOMEBREW_BOTTLE_DOMAIN="https://github.com/Homebrew/homebrew-bottles"
 
 # 设置 vscode 启动命令
 export PATH="$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"
@@ -23,11 +34,13 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
 # java环境
-export JAVA_HOME=$HOME/java-space/jdk/zulu-11.jdk/Contents/Home
-export PATH=$PATH:$JAVA_HOME/bin
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
 #我的脚本
-export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:$HOME/scripts/shell
 
 getIp() {
   ifconfig en0 | grep -Eo ".* netmask " | tr -cd "[:digit:][:punct:]" | pbcopy
@@ -50,4 +63,8 @@ clip_img() {
     -e 'set the clipboard to (read POSIX file (POSIX path of (currentDir as text & (first item of argv) )) as JPEG picture)' \
     -e 'end run' "/$1"
 }
-#2023-01-13 17:25:38
+
+mkcd() {
+  mkdir $1 && cd $1
+}
+#2023-02-17 09:05:26
